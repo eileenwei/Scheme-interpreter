@@ -1,0 +1,341 @@
+
+
+  Symbol Table===========
+  Level 2 ------ 
+
+  item | VARIABLE
+  lst | VARIABLE
+==========================
+
+
+
+  Symbol Table===========
+  Level 2 ------ 
+
+  item | VARIABLE
+  lst | VARIABLE
+==========================
+
+
+
+  Symbol Table===========
+  Level 0 ------ 
+
+  * | SCHEMEPROC
+  + | SCHEMEPROC
+  - | SCHEMEPROC
+  / | SCHEMEPROC
+  boolean? | SCHEMEPROC
+  car | SCHEMEPROC
+  cdr | SCHEMEPROC
+  char? | SCHEMEPROC
+  cons | SCHEMEPROC
+  equal? | SCHEMEPROC
+  integer? | SCHEMEPROC
+  list | SCHEMEPROC
+  not | SCHEMEPROC
+  null? | SCHEMEPROC
+  pairs?  | SCHEMEPROC
+  real? | SCHEMEPROC
+  string? | SCHEMEPROC
+  symbol? | SCHEMEPROC
+==========================
+
+
+
+  Symbol Table===========
+  Level 1 ------ 
+
+  member? | PROCEDURE
+  remove-last | PROCEDURE
+==========================
+
+
+==== TREE ====
+
+(
+  (define) 
+  (member?) 
+  (
+    (lambda) 
+    (
+      (item) 
+      (lst)) 
+    (
+      (cond) 
+      (
+        (
+          (null?) 
+          (lst)) 
+        (#f)) 
+      (
+        (
+          (equal?) 
+          (item) 
+          (
+            (car) 
+            (lst))) 
+        (#t)) 
+      (
+        (else) 
+        (
+          (member?) 
+          (item) 
+          (
+            (cdr) 
+            (lst)))))))
+
+==== TREE ====
+
+(
+  (member?) 
+  (3) 
+  (') 
+  (
+    (1) 
+    (2) 
+    (3)))
+
+==== TREE ====
+
+(
+  (member?) 
+  (3) 
+  (') 
+  (
+    (1) 
+    (
+      (3)) 
+    (2)))
+
+==== TREE ====
+
+(
+  (member?) 
+  (') 
+  (b) 
+  (') 
+  (
+    (a) 
+    (
+      (b)) 
+    (d)))
+
+==== TREE ====
+
+(
+  (member?) 
+  (') 
+  (b) 
+  (') 
+  (
+    (a) 
+    (b) 
+    (d)))
+
+==== TREE ====
+
+(
+  (member?) 
+  (') 
+  (b) 
+  (') 
+  (
+    (a) 
+    (
+      (b) 
+      (c)) 
+    (d)))
+
+==== TREE ====
+
+(
+  (define) 
+  (remove-last) 
+  (
+    (lambda) 
+    (
+      (item) 
+      (lst)) 
+    (
+      (cond) 
+      (
+        (
+          (null?) 
+          (lst)) 
+        (') 
+        ()) 
+      (
+        (
+          (and) 
+          (
+            (equal?) 
+            (item) 
+            (
+              (car) 
+              (lst))) 
+          (
+            (not) 
+            (
+              (member?) 
+              (item) 
+              (
+                (cdr) 
+                (lst))))) 
+        (
+          (cdr) 
+          (lst))) 
+      (
+        (else) 
+        (
+          (cons) 
+          (
+            (car) 
+            (lst)) 
+          (
+            (remove-last) 
+            (item) 
+            (
+              (cdr) 
+              (lst))))))))
+
+==== TREE ====
+
+(
+  (remove-last) 
+  (') 
+  (a) 
+  (') 
+  (
+    (a) 
+    (b) 
+    (a)))
+
+==== TREE ====
+
+(
+  (remove-last) 
+  (') 
+  (a) 
+  (') 
+  (
+    (a) 
+    (b) 
+    (c)))
+
+==== TREE ====
+
+(
+  (remove-last) 
+  (') 
+  (a) 
+  (') 
+  (
+    (b) 
+    (a) 
+    (n) 
+    (a) 
+    (n) 
+    (a) 
+    (s)))
+
+==== TREE ====
+
+(
+  (remove-last) 
+  (') 
+  (
+    (a) 
+    (b)) 
+  (') 
+  (
+    (a) 
+    (b) 
+    (
+      (b) 
+      (a))))
+
+==== TREE ====
+
+(
+  (remove-last) 
+  (') 
+  (
+    (a) 
+    (b)) 
+  (') 
+  (
+    (a) 
+    (b) 
+    (
+      (a) 
+      (b))))
+
+==== TREE ====
+
+(
+  (remove-last) 
+  (') 
+  (
+    (a) 
+    (b)) 
+  (') 
+  (
+    (
+      (a) 
+      (b)) 
+    (a) 
+    (b) 
+    (
+      (b) 
+      (a)) 
+    (a) 
+    (b) 
+    (
+      (a) 
+      (b)) 
+    (a) 
+    (b)))
+
+==== TREE ====
+
+(
+  (remove-last) 
+  (') 
+  (
+    (a) 
+    (b)) 
+  (') 
+  (
+    (a) 
+    (b) 
+    (
+      (a) 
+      (b)) 
+    (a) 
+    (b) 
+    (
+      (b) 
+      (a)) 
+    (a) 
+    (b) 
+    (
+      (a) 
+      (b)) 
+    (a) 
+    (b)))
+
+Interprete Result:
+
+#t
+#f
+#f
+#t
+#f
+(a b)
+(b c)
+(b a n a n s)
+(a b (b a))
+(a b)
+((a b) a b (b a) a b a b)
+(a b (a b) a b (b a) a b a b)
